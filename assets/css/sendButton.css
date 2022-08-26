@@ -1,0 +1,191 @@
+@keyframes button-loading {
+  20% {
+    color: transparent;
+    transform: scale(1, 1);
+  }
+  40% {
+    border-color: #e8481d;
+    background-color: transparent;
+    transform: scale(1, 1);
+  }
+  60% {
+    transform: scale(0.7, 1.1);
+    margin-left: 1.25rem;
+    width: 2.5rem;
+    text-indent: -0.6125rem;
+    color: transparent;
+    border-color: #e8481d;
+    background-color: #e8481d;
+  }
+  80% {
+    transform: scale(1, 1);
+  }
+  100% {
+    margin-left: 1.25rem;
+    width: 2.5rem;
+    background-color: #e8481d;
+    border-color: #e8481d;
+    color: transparent;
+  }
+}
+@keyframes button-dot-intro {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0.75, 0.75);
+  }
+}
+@keyframes button-dot-pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.75, 0.75);
+  }
+  15% {
+    transform: scale(0.85, 0.85);
+  }
+  45% {
+    transform: scale(0.75, 0.75);
+  }
+  55% {
+    transform: scale(0.95, 0.95);
+  }
+  85% {
+    transform: scale(0.75, 0.75);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.75, 0.75);
+  }
+}
+@keyframes button-ready {
+  0% {
+    margin-left: 1.25rem;
+    width: 2.5rem;
+  }
+  10% {
+    background-color: #c0c0c0;
+    border-color: #c0c0c0;
+  }
+  70% {
+    margin: 0;
+    width: 7.25rem;
+    border-color: #c0c0c0;
+    background-color: #c0c0c0;
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    margin: 0;
+    width: 7rem;
+    border-color: #c0c0c0;
+    background-color: #c0c0c0;
+    opacity: 0.4;
+  }
+}
+@keyframes button-dot-outro {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1, 1);
+  }
+}
+@keyframes button-ready-label {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.comments-send-button button {
+  position: relative;
+  overflow: hidden;
+  width: 6rem;
+  color: #111;
+  border: 2px solid #e8481d;
+  background-color: #e8481d;
+  cursor: pointer;
+  line-height: 2;
+  margin: 0;
+  border-radius: 1.5rem;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  outline: none;
+  transition: transform 0.125s;
+}
+.comments-send-button button:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
+.comments-send-button button:active {
+  transform: scale(0.9, 0.9);
+}
+.comments-send-button button:before,
+.comments-send-button button:after {
+  position: absolute;
+  opacity: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  margin-top: -1.125rem;
+  margin-left: -1.125rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  content: "";
+  z-index: 1;
+}
+.comments-send-button button.loading {
+  animation: button-loading 0.5s forwards;
+}
+.comments-send-button button.loading:before {
+  opacity: 1;
+  animation: button-dot-intro 0.5s forwards;
+}
+.comments-send-button button.loading:after {
+  opacity: 0;
+  animation: button-dot-pulse 1.5s infinite 0.5s;
+}
+.comments-send-button button.ready {
+  text-indent: 0;
+  background-color: transparent;
+  color: #000;
+  animation: button-ready 0.333s forwards;
+  pointer-events: none;
+}
+.comments-send-button button.ready:before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  margin: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background-color: transparent;
+  color: #fff;
+  content: "";
+  opacity: 0;
+  z-index: 2;
+  animation: button-ready-label 0.5s forwards 0.275s;
+}
+.comments-send-button button.ready:after {
+  opacity: 1;
+  background-color: transparent;
+  animation: button-dot-outro 0.333s;
+}
+
+.comments-send-button .dissable {
+  pointer-events: none;
+  background-color: #c0c0c0;
+  color: #000;
+  border-color: #c0c0c0;
+  opacity: 0.4;
+}
